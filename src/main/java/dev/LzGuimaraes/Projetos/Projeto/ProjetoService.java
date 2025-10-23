@@ -29,4 +29,12 @@ public class ProjetoService {
             .map(projetoMapper::toResponse)
             .orElseThrow(() -> new RuntimeException("Projeto não encontrado: " + numeroProjeto));
     }
+
+    public List<ProjetoDTO> buscarPorNumeroOuCliente(String busca) {
+    return projetoRepository
+        .findByNumeroProjetoOrClienteContainingIgnoreCase(busca, busca)
+        .stream()
+        .map(projetoMapper::toResponse)
+        .toList();
+    }
 }

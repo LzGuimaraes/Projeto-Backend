@@ -26,8 +26,13 @@ public class ProjetoController {
         return projetoService.getAllProjetos();
     }
 
-    @GetMapping("all/{numeroProjeto}")
+    @GetMapping("/all/{numeroProjeto}")
     public ProjetoDTO getByNumeroProjeto(@PathVariable String numeroProjeto) {
         return projetoService.getByNumeroProjeto(numeroProjeto);
     }
+
+    @GetMapping("/buscar/{valor}")
+    public List<ProjetoDTO> buscar(@PathVariable String valor) {
+    return projetoService.buscarPorNumeroOuCliente(valor);
+}
 }
