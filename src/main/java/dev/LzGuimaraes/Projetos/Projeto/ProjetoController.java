@@ -12,7 +12,7 @@ import dev.LzGuimaraes.Projetos.Projeto.dto.ProjetoDTO;
 
 @RestController
 @RequestMapping("/projetos")
-@CrossOrigin(origins = {"http://localhost:5173", "https://projetos-alpha-bay.vercel.app/"})
+@CrossOrigin(origins = {"https://projeto-v2-pi.vercel.app/"})
 public class ProjetoController {
 
     private final ProjetoService projetoService;
