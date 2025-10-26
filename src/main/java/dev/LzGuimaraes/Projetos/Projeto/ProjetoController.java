@@ -2,7 +2,6 @@ package dev.LzGuimaraes.Projetos.Projeto;
 
 import java.util.List;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,7 +14,6 @@ import dev.LzGuimaraes.Projetos.Projeto.dto.StatusReportDTO;
 
 @RestController
 @RequestMapping("/projetos")
-@CrossOrigin(origins = {"https://projeto-v2-pi.vercel.app/"})
 public class ProjetoController {
 
     private final ProjetoService projetoService;
