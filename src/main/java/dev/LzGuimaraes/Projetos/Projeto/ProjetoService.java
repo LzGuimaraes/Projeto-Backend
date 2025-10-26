@@ -37,4 +37,13 @@ public class ProjetoService {
         .map(projetoMapper::toResponse)
         .toList();
     }
+    public ProjetoDTO atualizarStatusReport(String numeroProjeto, String novoStatusReport) {
+        ProjetoModel projeto = projetoRepository.findByNumeroProjeto(numeroProjeto)
+            .orElseThrow(() -> new RuntimeException("Projeto não encontrado: " + numeroProjeto));
+
+        projeto.setStatusReport(novoStatusReport);
+        ProjetoModel projetoAtualizado = projetoRepository.save(projeto);
+
+        return projetoMapper.toResponse(projetoAtualizado);
+    }
 }

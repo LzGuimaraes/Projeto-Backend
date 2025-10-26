@@ -4,11 +4,14 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import dev.LzGuimaraes.Projetos.Projeto.dto.ProjetoDTO;
+import dev.LzGuimaraes.Projetos.Projeto.dto.StatusReportDTO;
 
 @RestController
 @RequestMapping("/projetos")
@@ -34,5 +37,12 @@ public class ProjetoController {
     @GetMapping("/buscar/{valor}")
     public List<ProjetoDTO> buscar(@PathVariable String valor) {
     return projetoService.buscarPorNumeroOuCliente(valor);
-}
+    }
+
+    @PatchMapping("/{numeroProjeto}/status-report")
+    public ProjetoDTO atualizarStatusReport(
+            @PathVariable String numeroProjeto,
+            @RequestBody StatusReportDTO statusDTO) {
+        return projetoService.atualizarStatusReport(numeroProjeto, statusDTO.statusReport());
+    }
 }
