@@ -30,13 +30,6 @@ public class ProjetoService {
             .orElseThrow(() -> new RuntimeException("Projeto não encontrado: " + numeroProjeto));
     }
 
-    public List<ProjetoDTO> buscarPorNumeroOuCliente(String busca) {
-    return projetoRepository
-        .findByNumeroProjetoOrClienteContainingIgnoreCase(busca, busca)
-        .stream()
-        .map(projetoMapper::toResponse)
-        .toList();
-    }
     public ProjetoDTO atualizarStatusReport(String numeroProjeto, String novoStatusReport) {
         ProjetoModel projeto = projetoRepository.findByNumeroProjeto(numeroProjeto)
             .orElseThrow(() -> new RuntimeException("Projeto não encontrado: " + numeroProjeto));
@@ -45,5 +38,12 @@ public class ProjetoService {
         ProjetoModel projetoAtualizado = projetoRepository.save(projeto);
 
         return projetoMapper.toResponse(projetoAtualizado);
+    }
+    
+    public List<ProjetoDTO> filtrar(String busca, String estado, String fase, String gerente) {
+        return projetoRepository.filtrarProjetos(busca, estado, fase, gerente)
+                .stream()
+                .map(projetoMapper::toResponse)
+                .toList();
     }
 }
