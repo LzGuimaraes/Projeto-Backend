@@ -14,7 +14,7 @@ public class WebConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/projetos/**")
-                        .allowedOrigins("https://projeto-v2-pi.vercel.app/")
+                        .allowedOrigins("https://projeto-v2-pi.vercel.app")
                         .allowedMethods("GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*");
             }
